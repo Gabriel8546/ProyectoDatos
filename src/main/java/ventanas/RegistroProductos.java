@@ -567,7 +567,7 @@ public class RegistroProductos extends javax.swing.JFrame {
                     Conexion conect2 = new Conexion();
                     con2 = conect2.getConnection();
                     Statement st2 = con2.createStatement();
-                    ResultSet rs1 = st2.executeQuery("SELECT * from Companias where CodCompania = '" + this.listCompañia.getSelectedIndex() + "'");
+                    ResultSet rs1 = st2.executeQuery("SELECT * from Companias where NombreCompania = '" + this.listCompañia.getSelectedItem()+ "'");
                     rs1.next();
                     this.codComp.setText(String.valueOf(rs1.getInt("CodCompania")));
                     this.compañia.setText(String.valueOf(rs1.getString("NombreCompania")));
@@ -659,6 +659,7 @@ public class RegistroProductos extends javax.swing.JFrame {
         {
             int fila = pantalla.getSelectedRow();  
             ID.setText(pantalla.getValueAt(fila, 0).toString());
+            listCompañia.setSelectedItem(pantalla.getValueAt(fila, 1).toString());
             compañia.setText(pantalla.getValueAt(fila, 1).toString());
             codComp.setText(pantalla.getValueAt(fila, 2).toString());
             codigo.setText(pantalla.getValueAt(fila, 3).toString());
@@ -668,6 +669,7 @@ public class RegistroProductos extends javax.swing.JFrame {
             margen.setText(pantalla.getValueAt(fila, 7).toString());
             venta.setText(pantalla.getValueAt(fila, 8).toString());
             impuesto.setSelectedItem(pantalla.getValueAt(fila, 9).toString());
+            
                      
             btnNuevo.setEnabled(true);
             btnGuardar.setEnabled(false);
