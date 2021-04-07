@@ -206,6 +206,7 @@ public class RegistroProductos extends javax.swing.JFrame {
 
         jLabel3.setText("UND x EMP");
 
+        UxE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         UxE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UxEActionPerformed(evt);
@@ -216,6 +217,7 @@ public class RegistroProductos extends javax.swing.JFrame {
 
         jLabel5.setText("COD COMPAÑIA");
 
+        codComp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         codComp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 codCompActionPerformed(evt);
@@ -224,6 +226,7 @@ public class RegistroProductos extends javax.swing.JFrame {
 
         jLabel6.setText("COSTO");
 
+        costo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         costo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 costoActionPerformed(evt);
@@ -232,6 +235,7 @@ public class RegistroProductos extends javax.swing.JFrame {
 
         jLabel7.setText("MARGEN");
 
+        margen.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         margen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 margenActionPerformed(evt);
@@ -248,6 +252,7 @@ public class RegistroProductos extends javax.swing.JFrame {
 
         jLabel8.setText("VENTA");
 
+        venta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         venta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ventaActionPerformed(evt);
@@ -282,6 +287,7 @@ public class RegistroProductos extends javax.swing.JFrame {
 
         jLabel10.setText("CONPAÑIA");
 
+        codigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         codigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 codigoActionPerformed(evt);
@@ -323,6 +329,7 @@ public class RegistroProductos extends javax.swing.JFrame {
                 "ID", "COMPAÑIA", "COD COMPAÑIA", "CODIGO", "PRODUCTO", "UND X EMP", "COSTO", "MARGEN", "VENTA", "IVA"
             }
         ));
+        pantalla.setCellSelectionEnabled(true);
         pantalla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pantallaMouseClicked(evt);
@@ -401,6 +408,7 @@ public class RegistroProductos extends javax.swing.JFrame {
                                     .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1055, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(36, Short.MAX_VALUE))))
         );
@@ -457,22 +465,25 @@ public class RegistroProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_descripcionActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (codigo.getText().isEmpty()) {
+        if (descripcion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "FALTA INGRESAR LA DESCRIPCION","Advertencia", JOptionPane.WARNING_MESSAGE);
+            descripcion.requestFocus();
+        } else if (compañia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "FALTA SELECCIONAR LA COMPAÑIA", "Advertencia", JOptionPane.WARNING_MESSAGE); 
+            listCompañia.requestFocus();
+        } else if (codComp.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "FALTA SELECCIONAR EL CODIGO DE LA COMPAÑIA", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            codComp.requestFocus();
+        } else if (codigo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "FALTA INGRESAR EL CÓDIGO", "Advertencia", JOptionPane.WARNING_MESSAGE);
             codigo.requestFocus();
-        } else if (descripcion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "FALTA INGRESAR LA DESCRIPCION", "Advertencia", JOptionPane.WARNING_MESSAGE);
-            descripcion.requestFocus();
         } else if (UxE.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "FALTA INGRESAR LA UNIDAD X EMPAQUE", "Advertencia", JOptionPane.WARNING_MESSAGE);
             UxE.requestFocus();
-        } else if (compañia.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "FALTA SELECCIONAR LA COMPAÑIA", "Advertencia", JOptionPane.WARNING_MESSAGE);
-            compañia.requestFocus();
-        } else if (codComp.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "FALTA SELECCIONAR LA COMPAÑIA", "Advertencia", JOptionPane.WARNING_MESSAGE);
-            codComp.requestFocus();
-        } else if (costo.getText().isEmpty()) {
+        } else if (impuesto.getSelectedItem().equals("") || impuesto.getSelectedItem().equals("SELECCIONE")) {
+            JOptionPane.showMessageDialog(this, "DEBE SELECCONAR TIPO DE IMPUESTO", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            impuesto.requestFocus();
+        }  else if (costo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "FALTA INGRESAR EL COSTO", "Advertencia", JOptionPane.WARNING_MESSAGE);
             costo.requestFocus();
         } else if (margen.getText().isEmpty()) {
@@ -481,10 +492,7 @@ public class RegistroProductos extends javax.swing.JFrame {
         } else if (venta.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "FALTA INGRESAR VENTA", "Advertencia", JOptionPane.WARNING_MESSAGE);
             venta.requestFocus();
-        } else if (impuesto.getSelectedItem().equals("") || impuesto.getSelectedItem().equals("SELECCIONE")) {
-            JOptionPane.showMessageDialog(this, "DEBE SELECCONAR TIPO DE IMPUESTO", "Advertencia", JOptionPane.WARNING_MESSAGE);
-            impuesto.requestFocus();
-        } else {
+        }  else {
             try {
                 Connection con = null;
                 Conexion conect = new Conexion();
