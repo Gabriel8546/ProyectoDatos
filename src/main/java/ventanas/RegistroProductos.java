@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -615,7 +617,41 @@ public class RegistroProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        try
+        {
+            Connection con = null;
+            Conexion conect = new Conexion();
+            con = conect.getConnection();
+            Statement st = con.createStatement();
+            String sql = "update productos set codigo = ?, descripcion = ?, unidadXempaque = ?, compania = ?, codCompania = ?, costo= ?, margen= ? , venta = ?, impuesto = ? where Id = ?";
+            PreparedStatement pst = con.prepareStatement(sql); 
+            pst.setString(1, codigo.getText());
+            pst.setString(2, descripcion.getText());
+            pst.setString(3, UxE.getText());
+            pst.setString(4, compañia.getText());
+            pst.setString(5, codComp.getText());
+            pst.setString(6, costo.getText());
+            pst.setString(7, margen.getText());
+            pst.setString(8, venta.getText());
+            pst.setString(9, (String) impuesto.getSelectedItem());
+            pst.setInt(10, Integer.parseInt(ID.getText()));
+            int n = pst.executeUpdate();
+            if (n > 0)
+            {
+                JOptionPane.showMessageDialog(this, "DATOS ACTUALIZADOS CORRECTAMENTE");
+                limpiar();
+                limpiarPantalla();
+                verPantalla();
+                btnNuevo.setEnabled(true);
+                btnGuardar.setEnabled(false);
+                btnModificar.setEnabled(false);
+                btnBorrar.setEnabled(false);
+                desabilitado();
+            }
+        } catch (SQLException | HeadlessException e)
+        {
+            JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO ACTUALIZADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+        } 
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void pantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pantallaMouseClicked
