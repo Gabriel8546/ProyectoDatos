@@ -13,8 +13,9 @@ Statement st = null;
     public Conexion(){
         try 
             {
-                String rutafile = "fidecompro.accdb"; 
-                String Url = "jdbc:ucanaccess://" + rutafile;
+                //String rutafile = "fidecompro.accdb"; 
+               //String Url = "jdbc:ucanaccess://" + rutafile;
+                String Url = "jdbc:mysql://localhost:3306/prueba" ;
                 ccn = DriverManager.getConnection(Url);
                 st = ccn.createStatement();
             } catch (SQLException e) 
