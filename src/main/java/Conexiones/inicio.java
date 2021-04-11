@@ -19,8 +19,8 @@ public class inicio {
      */
     public static void main(String[] args) {
         
-        RegistroProductos iniciar = new RegistroProductos();
-        //RegistroProveedor iniciar = new RegistroProveedor();
+        //RegistroProductos iniciar = new RegistroProductos();
+        RegistroProveedor iniciar = new RegistroProveedor();
         iniciar.setVisible(true);
     }
     

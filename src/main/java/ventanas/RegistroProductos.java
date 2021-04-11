@@ -48,7 +48,7 @@ public class RegistroProductos extends javax.swing.JFrame {
             Conexion conect3 = new Conexion();
             con3 = conect3.getConnection();
             Statement Sent = con3.createStatement();
-            rs = Sent.executeQuery("select * from Companias");
+            rs = Sent.executeQuery("select * from Compania");
             while(rs.next()){
                 this.listCompañia.addItem(rs.getString("NombreCompania"));
             }
@@ -497,7 +497,7 @@ public class RegistroProductos extends javax.swing.JFrame {
                 Connection con = null;
                 Conexion conect = new Conexion();
                 con = conect.getConnection();
-                Statement st = con.createStatement();
+                //Statement st = con.createStatement();
                 String sql = "INSERT INTO Productos (codigo,descripcion,unidadXempaque,compania,codCompania,costo,margen,venta,impuesto) VALUES (?,?,?,?,?,?,?,?,?)";
                 PreparedStatement pst = con.prepareStatement(sql);
                 pst.setString(1, codigo.getText());
@@ -630,7 +630,7 @@ public class RegistroProductos extends javax.swing.JFrame {
             Connection con = null;
             Conexion conect = new Conexion();
             con = conect.getConnection();
-            Statement st = con.createStatement();
+           // Statement st = con.createStatement();
             String sql = "update productos set codigo = ?, descripcion = ?, unidadXempaque = ?, compania = ?, codCompania = ?, costo= ?, margen= ? , venta = ?, impuesto = ? where Id = ?";
             PreparedStatement pst = con.prepareStatement(sql); 
             pst.setString(1, codigo.getText());
@@ -707,7 +707,7 @@ public class RegistroProductos extends javax.swing.JFrame {
                     Connection con = null;
                     Conexion conect = new Conexion();
                     con = conect.getConnection();
-                    Statement st = con.createStatement();
+                    //Statement st = con.createStatement();
                     String sql = "delete from Productos where id = ?";
                     PreparedStatement pst = con.prepareStatement(sql);
                     pst.setInt(1, Integer.parseInt(ID.getText()));

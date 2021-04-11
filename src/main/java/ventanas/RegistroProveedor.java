@@ -82,7 +82,7 @@ public class RegistroProveedor extends javax.swing.JFrame {
             Conexion conect1 = new Conexion();
             con1 = conect1.getConnection();
             String dts[] = new String[4];
-            String sql = "select * from Companias";
+            String sql = "select * from Compania";
             Statement st = con1.createStatement();
             ResultSet rs = st.executeQuery(sql);  
             while(rs.next()){
@@ -298,7 +298,7 @@ public class RegistroProveedor extends javax.swing.JFrame {
                 Conexion conect = new Conexion();
                 con = conect.getConnection();
                 Statement st = con.createStatement();
-                String sql = "INSERT INTO Companias (NombreCompania,Correo,Telefono) VALUES (?,?,?)";
+                String sql = "INSERT INTO Compania (NombreCompania,Correo,Telefono) VALUES (?,?,?)";
                 PreparedStatement pst = con.prepareStatement(sql);
                 pst.setString(1, nombreCompañia.getText());
                 pst.setString(2, correo.getText());               
@@ -317,7 +317,7 @@ public class RegistroProveedor extends javax.swing.JFrame {
                 }
             } catch (SQLException | HeadlessException e) {
                 System.out.println(e);
-                JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE "+ e , "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
        
@@ -354,7 +354,7 @@ public class RegistroProveedor extends javax.swing.JFrame {
             Conexion conect = new Conexion();
             con = conect.getConnection();
             Statement st = con.createStatement();
-            String sql = "update Companias set NombreCompania = ?, Correo = ?, Telefono = ?  where CodCompania = ?";
+            String sql = "update Compania set NombreCompania = ?, Correo = ?, Telefono = ?  where CodCompania = ?";
             String sql2 = "update Productos set Compania = ?  where CodCompania = ?";
             PreparedStatement pst = con.prepareStatement(sql); 
             PreparedStatement pst2 = con.prepareStatement(sql2);
@@ -380,7 +380,7 @@ public class RegistroProveedor extends javax.swing.JFrame {
             }
         } catch (SQLException | HeadlessException e)
         {
-            JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO ACTUALIZADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO ACTUALIZADOS CORRECTAMENTE " + e, "Error", JOptionPane.ERROR_MESSAGE);
         } 
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -423,7 +423,7 @@ public class RegistroProveedor extends javax.swing.JFrame {
                     Conexion conect = new Conexion();
                     con = conect.getConnection();
                     Statement st = con.createStatement();
-                    String sql = "delete from Companias where CodCompania = ?";
+                    String sql = "delete from Compania where CodCompania = ?";
                     PreparedStatement pst = con.prepareStatement(sql);
                     pst.setInt(1, Integer.parseInt(idCompañia.getText()));
                     int n = pst.executeUpdate();
