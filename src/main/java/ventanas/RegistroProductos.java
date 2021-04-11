@@ -575,7 +575,7 @@ public class RegistroProductos extends javax.swing.JFrame {
                     Conexion conect2 = new Conexion();
                     con2 = conect2.getConnection();
                     Statement st2 = con2.createStatement();
-                    ResultSet rs1 = st2.executeQuery("SELECT * from Companias where NombreCompania = '" + this.listCompañia.getSelectedItem()+ "'");
+                    ResultSet rs1 = st2.executeQuery("SELECT * from Compania where NombreCompania = '" + this.listCompañia.getSelectedItem()+ "'");
                     rs1.next();
                     this.codComp.setText(String.valueOf(rs1.getInt("CodCompania")));
                     this.compañia.setText(String.valueOf(rs1.getString("NombreCompania")));
