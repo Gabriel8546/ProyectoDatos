@@ -523,7 +523,7 @@ public class RegistroProductos extends javax.swing.JFrame {
                 }
             } catch (SQLException | HeadlessException e) {
                 System.out.println(e);
-                JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
        
@@ -631,7 +631,7 @@ public class RegistroProductos extends javax.swing.JFrame {
             Conexion conect = new Conexion();
             con = conect.getConnection();
            // Statement st = con.createStatement();
-            String sql = "update productos set codigo = ?, descripcion = ?, unidadXempaque = ?, compania = ?, codCompania = ?, costo= ?, margen= ? , venta = ?, impuesto = ? where Id = ?";
+            String sql = "update Productos set codigo = ?, descripcion = ?, unidadXempaque = ?, compania = ?, codCompania = ?, costo= ?, margen= ? , venta = ?, impuesto = ? where Id = ?";
             PreparedStatement pst = con.prepareStatement(sql); 
             pst.setString(1, codigo.getText());
             pst.setString(2, descripcion.getText());
@@ -658,7 +658,7 @@ public class RegistroProductos extends javax.swing.JFrame {
             }
         } catch (SQLException | HeadlessException e)
         {
-            JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO ACTUALIZADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO ACTUALIZADOS CORRECTAMENTE" + e, "Error", JOptionPane.ERROR_MESSAGE);
         } 
     }//GEN-LAST:event_btnModificarActionPerformed
 
