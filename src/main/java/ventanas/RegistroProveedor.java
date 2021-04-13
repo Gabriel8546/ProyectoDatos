@@ -313,6 +313,7 @@ public class RegistroProveedor extends javax.swing.JFrame {
                     btnNuevo.setEnabled(true);
                     btnGuardar.setEnabled(false);
                     desabilitado();
+                    con.close();
                    
                 }
             } catch (SQLException | HeadlessException e) {
@@ -377,6 +378,7 @@ public class RegistroProveedor extends javax.swing.JFrame {
                 btnModificar.setEnabled(false);
                 btnBorrar.setEnabled(false);
                 desabilitado();
+                con.close();
             }
         } catch (SQLException | HeadlessException e)
         {
@@ -438,13 +440,16 @@ public class RegistroProveedor extends javax.swing.JFrame {
                         btnModificar.setEnabled(false);
                         btnBorrar.setEnabled(false);
                         desabilitado();
+                        con.close();
                     }
                 } catch (SQLException ex)
                 {
                     JOptionPane.showMessageDialog(this, "DATOS NO ELIMINADOS CORRECTAMENTE" + ex.getMessage());
+                    
                 }
             }
         }
+        
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void idCompañiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCompañiaActionPerformed

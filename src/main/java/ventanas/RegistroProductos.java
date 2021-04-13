@@ -519,13 +519,15 @@ public class RegistroProductos extends javax.swing.JFrame {
                     btnNuevo.setEnabled(true);
                     btnGuardar.setEnabled(false);
                     desabilitado();
+                    con.close();
                    
                 }
             } catch (SQLException | HeadlessException e) {
                 System.out.println(e);
-                JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+        
        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -571,15 +573,17 @@ public class RegistroProductos extends javax.swing.JFrame {
         if (!listCompañia.getSelectedItem().equals("SELECCIONAR PROVEEDOR")) {
             try {
                 if (this.contador > 0) {
-                    Connection con2 = null;
-                    Conexion conect2 = new Conexion();
-                    con2 = conect2.getConnection();
-                    Statement st2 = con2.createStatement();
-                    ResultSet rs1 = st2.executeQuery("SELECT * from Companias where NombreCompania = '" + this.listCompañia.getSelectedItem()+ "'");
+                    Connection con = null;
+                    Conexion conect = new Conexion();
+                    con = conect.getConnection();
+                    Statement st2 = con.createStatement();
+                    ResultSet rs1 = st2.executeQuery("SELECT * from Compania where NombreCompania = '" + this.listCompañia.getSelectedItem()+ "'");
                     rs1.next();
                     this.codComp.setText(String.valueOf(rs1.getInt("CodCompania")));
                     this.compañia.setText(String.valueOf(rs1.getString("NombreCompania")));
+                    con.close();
                 }
+                                
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e);
             }
@@ -631,7 +635,7 @@ public class RegistroProductos extends javax.swing.JFrame {
             Conexion conect = new Conexion();
             con = conect.getConnection();
            // Statement st = con.createStatement();
-            String sql = "update productos set codigo = ?, descripcion = ?, unidadXempaque = ?, compania = ?, codCompania = ?, costo= ?, margen= ? , venta = ?, impuesto = ? where Id = ?";
+            String sql = "update Productos set codigo = ?, descripcion = ?, unidadXempaque = ?, compania = ?, codCompania = ?, costo= ?, margen= ? , venta = ?, impuesto = ? where Id = ?";
             PreparedStatement pst = con.prepareStatement(sql); 
             pst.setString(1, codigo.getText());
             pst.setString(2, descripcion.getText());
@@ -655,10 +659,11 @@ public class RegistroProductos extends javax.swing.JFrame {
                 btnModificar.setEnabled(false);
                 btnBorrar.setEnabled(false);
                 desabilitado();
+                con.close();
             }
         } catch (SQLException | HeadlessException e)
         {
-            JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO ACTUALIZADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO ACTUALIZADOS CORRECTAMENTE" + e, "Error", JOptionPane.ERROR_MESSAGE);
         } 
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -723,6 +728,7 @@ public class RegistroProductos extends javax.swing.JFrame {
                         btnModificar.setEnabled(false);
                         btnBorrar.setEnabled(false);
                         desabilitado();
+                        con.close();
                     }
                 } catch (SQLException ex)
                 {
