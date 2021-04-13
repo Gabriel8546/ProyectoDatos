@@ -41,12 +41,12 @@ public class AgregarUsuarios extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtConfirmPass = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtIDUsuario = new javax.swing.JTextField();
         btnCompletarRegistro = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
+        txtConfirmPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +70,12 @@ public class AgregarUsuarios extends javax.swing.JFrame {
             }
         });
 
+        txtConfirmPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConfirmPassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -82,6 +88,10 @@ public class AgregarUsuarios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNombre)
+                    .addComponent(txtUsuario)
+                    .addComponent(txtIDUsuario)
+                    .addComponent(btnCompletarRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPassword)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -90,11 +100,7 @@ public class AgregarUsuarios extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtUsuario)
-                    .addComponent(txtPassword)
-                    .addComponent(txtConfirmPass)
-                    .addComponent(txtIDUsuario)
-                    .addComponent(btnCompletarRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtConfirmPass))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -113,11 +119,11 @@ public class AgregarUsuarios extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,7 +162,7 @@ public class AgregarUsuarios extends javax.swing.JFrame {
     }else if(txtPassword.getText().isEmpty()){
         JOptionPane.showMessageDialog(this, "FALTA REGISTRAR UNA CONTRASEÑA");
         txtPassword.requestFocus();
-    }else if(txtPassword.getText()!= txtConfirmPass.getText()){
+    }else if(!txtConfirmPass.getText().equals(txtPassword.getText())){
         JOptionPane.showMessageDialog(this, "NO COINCIDEN LAS CONTRASEÑAS");
         txtPassword.requestFocus();
     }else if(txtIDUsuario.getText().isEmpty()){
@@ -197,6 +203,10 @@ public class AgregarUsuarios extends javax.swing.JFrame {
     }
         
     }//GEN-LAST:event_btnCompletarRegistroActionPerformed
+
+    private void txtConfirmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,10 +252,10 @@ public class AgregarUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtConfirmPass;
+    private javax.swing.JPasswordField txtConfirmPass;
     private javax.swing.JTextField txtIDUsuario;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
