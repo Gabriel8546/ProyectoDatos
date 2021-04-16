@@ -166,8 +166,9 @@ public class LoginUsuario extends javax.swing.JFrame {
             System.out.println(e);
             JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
         }
-       
-
+        
+        
+        
         
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
