@@ -13,7 +13,7 @@ public class ProyectoDatos {
                     
                             "**********NOMBRE**********\n"
                             + "1.Agregar corredor\n"
-                            + "2.Definir el ganador\n"
+                            + "2.\n"
                             + "3.\n"
                             + "4.Salir \n"
                             + "Digite la opcion que desea ejecutar\n"
