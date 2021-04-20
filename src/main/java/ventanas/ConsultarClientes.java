@@ -186,6 +186,7 @@ if(Tabla.getSelectedRow() == -1){
 }else{
     Eliminar();
 }
+
     }//GEN-LAST:event_EliminarActionPerformed
 
     public void Eliminar(){
