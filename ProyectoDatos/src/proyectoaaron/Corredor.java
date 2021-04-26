@@ -84,7 +84,7 @@ public class Corredor {
     
      @Override
     public String toString() {
-        return "Corredor=" + nombre + ", ID=" + ID + "Tiempo total= "+ tiempoTotal;
+        return "\nCorredor: " + nombre + "\nID: " + ID + "\nTiempo total: "+ tiempoTotal;
     }
     
     

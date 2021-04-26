@@ -42,7 +42,7 @@ public class DatoApuesta {
 
     @Override
     public String toString() {
-        return "Corredor: El nombre del corrdor es: " + nombreCorredor
+        return "Corredor: El nombre del corredor es: " + nombreCorredor
                 + " El monto apostado es: " + montoApostado + "|\n " + abajo;
     }
     

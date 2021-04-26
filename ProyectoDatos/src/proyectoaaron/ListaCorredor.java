@@ -7,7 +7,7 @@ public class ListaCorredor {
     public void Insertar(Corredor c){
         if(cabeza==null){
             cabeza = new NodoCorredor(c);
-        }else if(c.getID()>cabeza.getDatosCorredor().getTiempoTotal()){
+        }else if(c.getTiempoTotal() < cabeza.getDatosCorredor().getTiempoTotal()){
             NodoCorredor aux = new NodoCorredor(c);
             aux.setNext(cabeza);
             cabeza = aux;
@@ -15,7 +15,7 @@ public class ListaCorredor {
             cabeza.setNext(new NodoCorredor(c));
         }else{
             NodoCorredor aux = cabeza;
-            while(aux.getNext()!=null && aux.getNext().getDatosCorredor().getTiempoTotal()> c.getTiempoTotal() ){
+            while(aux.getNext()!=null && aux.getNext().getDatosCorredor().getTiempoTotal()< c.getTiempoTotal() ){
                 aux = aux.getNext();
             }
             NodoCorredor temp = new NodoCorredor(c);
@@ -23,9 +23,30 @@ public class ListaCorredor {
             aux.setNext(temp);
         }
     }
-
     
-    
+    public void Eliminar(double Tiempo){
+        
+        if(cabeza != null){
+            if(cabeza != null){
+                while(cabeza.getDatosCorredor().getTiempoTotal() >= Tiempo){
+                    
+                if(cabeza.getDatosCorredor().getTiempoTotal() >= Tiempo){
+                    cabeza = cabeza.getNext();
+                }else{
+                    NodoCorredor aux = cabeza;
+ 
+                    while(aux.getNext() != null && aux.getNext().getDatosCorredor().getTiempoTotal() >= Tiempo){
+                        aux = aux.getNext();
+                    }
+                    if(aux.getNext() != null && aux.getNext().getDatosCorredor().getTiempoTotal() >= Tiempo){
+                        aux.setNext(aux.getNext().getNext());
+                    }
+                    
+                }
+                }
+            }
+        }
+    }
     
     
     
@@ -34,9 +55,9 @@ public class ListaCorredor {
     @Override
     public String toString() {
         NodoCorredor aux = cabeza;
-        String s = "Lista:" ;
+        String s = "\n" ;
         while(aux != null){
-                s += aux + ", " + "\n";
+                s += aux + " " + "\n";
                 aux = aux.getNext();
         }
         return s;
