@@ -1,5 +1,5 @@
 
-package Estructuras;
+package proyectoaaron;
 
 
 public class NodoCorredor {
