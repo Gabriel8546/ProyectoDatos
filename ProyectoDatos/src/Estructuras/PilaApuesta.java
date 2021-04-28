@@ -1,5 +1,5 @@
 
-package proyectoaaron;
+package Estructuras;
 
 
 public class PilaApuesta {

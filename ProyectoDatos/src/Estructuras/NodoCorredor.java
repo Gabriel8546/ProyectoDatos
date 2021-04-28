@@ -1,5 +1,5 @@
 
-package proyectoaaron;
+package Estructuras;
 
 
 public class NodoCorredor {
@@ -42,7 +42,7 @@ public class NodoCorredor {
     
     @Override
     public String toString() {
-        return "Corredor{" + datosCorredor + '}';
+        return "" + datosCorredor;
     }
     
     
